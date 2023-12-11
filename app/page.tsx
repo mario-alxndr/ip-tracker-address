@@ -1,12 +1,26 @@
+'use client'
+
 // Node Modules
-import React from "react";
+import React, { useMemo } from "react";
+import dynamic from "next/dynamic";
 
 const IpAddressTrackerPage = () => {
+  const Map = useMemo(() => dynamic(
+    () => import('@/components/Map'),
+    { 
+      loading: () => <p>A map is loading</p>,
+      ssr: false
+    }
+  ), [])
+
   return (
     <main className="min-h-screen">
-      this is IP tracker
+      <Map 
+        // center={}
+        // zoom={}
+      />
     </main>
   )
-}
+};
 
 export default IpAddressTrackerPage;
