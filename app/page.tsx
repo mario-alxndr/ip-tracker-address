@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 // Node Modules
 import React, { useMemo } from "react";
@@ -15,10 +15,7 @@ const IpAddressTrackerPage = () => {
 
   return (
     <main className="min-h-screen">
-      <Map 
-        // center={}
-        // zoom={}
-      />
+      <Map />
     </main>
   )
 };
