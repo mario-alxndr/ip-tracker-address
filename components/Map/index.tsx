@@ -14,7 +14,7 @@ import LocationMarker from "./LocationMarker";
 const MyMap = () => {
   return (
     <MapContainer 
-      className={'h-screen'}
+      className={'h-screen z-0'}
       center={{
         lat: -6.2,
         lng: 106.8,
