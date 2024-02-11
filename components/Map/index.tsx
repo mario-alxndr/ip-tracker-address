@@ -1,25 +1,30 @@
 // src/components/Map.tsx
-import React from "react";
+import React, { useContext } from "react";
 import { MapContainer, TileLayer } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import "leaflet-defaulticon-compatibility";
 import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css";
 
-// Types
-import type { FC } from 'react';
-
 // Component
 import LocationMarker from "./LocationMarker";
 
+import { PositionContext } from './../../app/page';
+
 const MyMap = () => {
+  const position = useContext(PositionContext);
+  const { lat = -6.2, lng = 106.8 } = position;
+
+  console.log('position', position);
+
   return (
     <MapContainer 
       className={'h-screen z-0'}
       center={{
-        lat: -6.2,
-        lng: 106.8,
+        lat: lat,
+        lng: lng
       }}
       zoom={13}
+      zoomControl={false}
       scrollWheelZoom={false}
     >
       <TileLayer
