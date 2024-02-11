@@ -1,5 +1,5 @@
 // src/components/Map.tsx
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { MapContainer, TileLayer } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import "leaflet-defaulticon-compatibility";
@@ -12,9 +12,15 @@ import { PositionContext } from './../../app/page';
 
 const MyMap = () => {
   const position = useContext(PositionContext);
-  const { lat = -6.2, lng = 106.8 } = position;
+  const { lat: fetchedLat, lng: fetchedLng } = position;
 
-  console.log('position', position);
+  const [lat, setLat] = useState(-6.2);
+  const [lng, setLng] = useState(106.8);
+
+  useEffect(() => {
+    setLat(fetchedLat); 
+    setLng(fetchedLng);
+  }, []);
 
   return (
     <MapContainer 
