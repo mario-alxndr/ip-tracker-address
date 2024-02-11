@@ -35,7 +35,6 @@ const IpAddressTrackerPage = () => {
               <p className={"text-s font-semibold text-center dweb:text-left"}>192.212.174.101</p>
             </div>
           </div>
-          {/* <div className="inline-block w-1/4"> */}
           <div className="mb-6 w-full dweb:inline-block dweb:align-top dweb:w-1/4 dweb:mb-0">
             <div className={"hidden bg-gray-300 h-10 w-px absolute dweb:block"}/>
             <div className="mx-9">
@@ -43,7 +42,6 @@ const IpAddressTrackerPage = () => {
               <p className={"text-s font-semibold text-center dweb:text-left"}>Brooklyn, NY 10001</p>
             </div>
           </div>
-          {/* <div className="inline-block w-1/4"> */}
           <div className="mb-6 w-full dweb:inline-block dweb:align-top dweb:w-1/4 dweb:mb-0">
             <div className={"hidden bg-gray-300 h-10 w-px absolute dweb:block"}/>
             <div className="mx-9">
@@ -51,7 +49,6 @@ const IpAddressTrackerPage = () => {
               <p className={"text-s font-semibold text-center dweb:text-left"}>UTC -05:00</p>
             </div>
           </div>
-          {/* <div className="inline-block w-1/4"> */}
           <div className="w-full dweb:inline-block dweb:align-top dweb:w-1/4 dweb:mb-0">
             <div className={"hidden bg-gray-300 h-10 w-px absolute dweb:block"}/>
             <div className="mx-9">
