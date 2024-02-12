@@ -92,9 +92,11 @@ const IpAddressTrackerPage = () => {
         </div>
       </div>
       <Image className={"w-full h-72"} src={backgroundImage} alt={"background-image-ip-tracker"}/>
-      <PositionContext.Provider value={{ lat: lat, lng: lng }}>
-        <Map />
-      </PositionContext.Provider>
+      {!isLoading && (
+        <PositionContext.Provider value={{ lat: lat, lng: lng }}>
+          <Map />
+        </PositionContext.Provider>
+      )}
     </main>
   )
 };

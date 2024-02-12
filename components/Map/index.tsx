@@ -1,6 +1,6 @@
 // src/components/Map.tsx
 import React, { useContext, useEffect, useState } from "react";
-import { MapContainer, TileLayer } from "react-leaflet";
+import { MapContainer, TileLayer, useMap } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import "leaflet-defaulticon-compatibility";
 import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css";
@@ -12,23 +12,26 @@ import { PositionContext } from './../../app/page';
 
 const MyMap = () => {
   const position = useContext(PositionContext);
-  const { lat: fetchedLat, lng: fetchedLng } = position;
+  const { lat: propsLat, lng: propsLng } = position;
 
-  const [lat, setLat] = useState(-6.2);
-  const [lng, setLng] = useState(106.8);
+  const RecenterAutomatically = ({ lat, lng }: any) => {
+    const map = useMap();
 
-  useEffect(() => {
-    setLat(fetchedLat); 
-    setLng(fetchedLng);
-  }, []);
+    useEffect(() => {
+      map.setView([lat, lng]);
+    }, []);
+    return null;
+  };
 
   return (
-    <MapContainer 
+    <MapContainer
+      attributionControl
       className={'h-screen z-0'}
       center={{
-        lat: lat,
-        lng: lng
+        lat: propsLat,
+        lng: propsLng
       }}
+      dragging
       zoom={13}
       zoomControl={false}
       scrollWheelZoom={false}
@@ -38,6 +41,7 @@ const MyMap = () => {
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
       <LocationMarker />
+      <RecenterAutomatically lat={propsLat} lng={propsLng} />
     </MapContainer>
   );
 };
