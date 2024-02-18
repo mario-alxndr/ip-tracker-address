@@ -8,7 +8,8 @@ import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility
 // Component
 import LocationMarker from "./LocationMarker";
 
-import { PositionContext } from './../../app/page';
+// Lib
+import { PositionContext } from '@/lib/context';
 
 const MyMap = () => {
   const position = useContext(PositionContext);

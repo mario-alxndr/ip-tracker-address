@@ -1,7 +1,7 @@
 'use client';
 
 // Node Modules
-import React, { FormEvent, createContext, useEffect, useMemo, useState } from "react";
+import React, { FormEvent, useEffect, useMemo, useState } from "react";
 import dynamic from "next/dynamic";
 import { useQuery, QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
@@ -11,6 +11,7 @@ import InputIp from "@/components/InputIP";
 
 // Lib
 import { fetchGeolocation } from "@/lib";
+import { PositionContext } from '@/lib/context';
 
 // Assets
 import backgroundImage from '../assets/pattern-bg-desktop.png';
@@ -18,11 +19,6 @@ import backgroundImage from '../assets/pattern-bg-desktop.png';
 require('dotenv').config()
 
 const queryClient = new QueryClient();
-
-export const PositionContext = createContext({
-  lat: -6.2,
-  lng: 106.8
-});
 
 const IpAddressTrackerPage = () => {
   const { data: initialGeoLocationData, isLoading, refetch: refetchGeolocation } = useQuery({
