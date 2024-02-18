@@ -38,9 +38,10 @@ const InputIp = (props: TInputIpProps) => {
     <>
       <div className={"mx-6 flex dweb:w-1/3 dweb:mx-auto"} >
         <input 
-          className={"w-[calc(100%-58px)] rounded-s-2xl p-4"} 
+          className={"w-[calc(100%-58px)] rounded-s-2xl p-4"}
+          onChange={handleChangeIpAddress}
+          placeholder="Search for any IP address or domain"
           value={value}
-          onChange={handleChangeIpAddress}  
         />
         <button className={"p-5 bg-black rounded-e-2xl"} onClick={handleClickSearchIp}>
           <Image src={iconArrow} alt={"icon-arrow-search"}/>
