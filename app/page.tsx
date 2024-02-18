@@ -1,13 +1,16 @@
 'use client';
 
 // Node Modules
-import React, { createContext, useMemo } from "react";
+import React, { FormEvent, createContext, useEffect, useMemo, useState } from "react";
 import dynamic from "next/dynamic";
 import { useQuery, QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 // Component
 import Image from "next/image";
 import InputIp from "@/components/InputIP";
+
+// Lib
+import { fetchGeolocation } from "@/lib";
 
 // Assets
 import backgroundImage from '../assets/pattern-bg-desktop.png';
@@ -21,18 +24,10 @@ export const PositionContext = createContext({
   lng: 106.8
 });
 
-const fetchInitialGeolocation = async () => {
-  const response = await fetch(`https://geo.ipify.org/api/v2/country,city?apiKey=${process.env.NEXT_PUBLIC_GEOLOCATION_TOKEN}`);
-  const data = await response.json();
-
-  return data;
-};
-
 const IpAddressTrackerPage = () => {
-  // Initial Fetch useQuery
-  const { data: initialGeoLocationData, isLoading } = useQuery({
+  const { data: initialGeoLocationData, isLoading, refetch: refetchGeolocation } = useQuery({
     queryKey: ['get-geolocation'], 
-    queryFn: fetchInitialGeolocation,
+    queryFn: () => fetchGeolocation(inputIpAddress || ''),
   }, queryClient);
   const {
     ip,
@@ -49,6 +44,12 @@ const IpAddressTrackerPage = () => {
     timezone: timezoneData,
   } = locationData || {};
 
+  const [inputIpAddress, setInputIpAddress] = useState<string>('');
+
+  const handleChangeIpAddress = (e: FormEvent<HTMLInputElement>) => {
+    setInputIpAddress(e.currentTarget.value);
+  };
+
   const Map = useMemo(() => dynamic(
     () => import('@/components/Map'),
     { 
@@ -57,13 +58,17 @@ const IpAddressTrackerPage = () => {
     }
   ), []);
 
+  useEffect(() => {
+    setInputIpAddress(ip);
+  }, [isLoading]);
+
   return (
     <QueryClientProvider client={queryClient}>
       <main className="min-h-screen">
         <div className={"absolute w-full pt-9 z-10"}>
           <h1 className="text-center mb-9 text-white text-base font-bold">IP Tracker Address</h1>
           {!isLoading && (
-            <InputIp initialIpAddress={ip}/>
+            <InputIp value={inputIpAddress} onChangeIpAddress={handleChangeIpAddress} refetchGeolocation={refetchGeolocation}/>
           )}
           <div className={"rounded-2xl bg-white py-10 px-8 mt-12 mx-[12.5%] inline-block w-9/12"}>
             <div className="mb-6 w-full dweb:inline-block dweb:align-top dweb:w-1/4 dweb:mb-0">
