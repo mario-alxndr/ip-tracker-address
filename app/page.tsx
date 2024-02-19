@@ -71,7 +71,7 @@ const IpAddressTrackerPage = () => {
               <div>
                 <p className={"text-xs text-gray-400 font-semibold text-center dweb:text-left"}>IP ADDRESS</p>
                 {ip !== '' && (
-                  <p className={"text-s font-semibold text-center dweb:text-left"}>{ip}</p>
+                  <p className={"text-s font-semibold text-center dweb:text-left text-gray-900"}>{ip}</p>
                 )}
               </div>
             </div>
@@ -80,7 +80,7 @@ const IpAddressTrackerPage = () => {
               <div className="mx-9">
                 <p className={"text-xs text-gray-400 font-semibold text-center dweb:text-left"}>LOCATION</p>
                 {city !== '' && country !== '' && geonameId !== '' && (
-                  <p className={"text-s font-semibold text-center dweb:text-left"}>{`${city} ${country} ${geonameId}`}</p>
+                  <p className={"text-s font-semibold text-center dweb:text-left text-gray-900"}>{`${city} ${country} ${geonameId}`}</p>
                 )}
               </div>
             </div>
@@ -89,7 +89,7 @@ const IpAddressTrackerPage = () => {
               <div className="mx-9">
                 <p className={"text-xs text-gray-400 font-semibold text-center dweb:text-left"}>TIMEZONE</p>
                 {timezoneData !== '' && (
-                  <p className={"text-s font-semibold text-center dweb:text-left"}>{timezoneData}</p>
+                  <p className={"text-s font-semibold text-center dweb:text-left text-gray-900"}>{timezoneData}</p>
                 )}
               </div>
             </div>
@@ -98,7 +98,7 @@ const IpAddressTrackerPage = () => {
               <div className="mx-9">
                 <p className={"text-xs text-gray-400 font-semibold text-center dweb:text-left"}>ISP</p>
                 {ispData !== '' && (
-                  <p className={"text-s font-semibold text-center dweb:text-left"}>{ispData}</p>
+                  <p className={"text-s font-semibold text-center dweb:text-left text-gray-900"}>{ispData}</p>
                 )}
               </div>
             </div>
